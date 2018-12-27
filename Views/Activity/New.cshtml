@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] =  "Add Activity!";
+}
+@model Activity
+<h1>Activity Center</h1>
+<a href="/logout">Logout</a> | <a href="/dashboard">Dashboard</a>
+<hr>
+<h3>Create an Activity!</h3>
+<form asp-action="CreateActivity" asp-controller="Activity" method="POST">
+    <div class="form-group">
+        <span asp-validation-for="Title"></span>
+        <label asp-for="Title">Title: </label>
+        <input class="form-control" asp-for="Title">
+    </div>
+
+    <div class="form-group">
+        <span asp-validation-for="Date"></span>
+        <label asp-for="Date">Date: </label>
+        <input class="form-control" type="date" asp-for="Date">
+    </div>
+
+    <div class="form-group">
+        <span asp-validation-for="Time"></span>
+        <label asp-for="Time">Time: </label>
+        <input class="form-control" placeholder="12:00 PM" asp-for="Time">
+    </div>
+
+    <div class="form-group">
+        <span asp-validation-for="Duration"></span>
+        <label asp-for="Duration">Duration: </label>
+        <input class="form-control" type="number" asp-for="Duration">
+        <select name="Duration_Set">
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+        </select>
+    </div>
+
+        <div class="form-group">
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description">Description: </label>
+        <textarea class="form-control" asp-for="Description" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="form-group">
+        <input asp-for="UserId" type="hidden" value="@ViewBag.User.UserId" name="UserId">
+    </div>
+
+    <button type="submit">Add Activity!</button>
+</form>
+

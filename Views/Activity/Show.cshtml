@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] =  "Activity";
+}
+
+<h1>Activity Center</h1>
+<a href="/logout">Logout</a> | <a href="/dashboard">Dashboard</a>
+<hr>
+<h2>Event: @Model.Title</h2>
+<h4>Event Coordinator: @Model.Coordinator.FirstName @Model.Coordinator.LastName  </h4>
+<hr>
+<h5>Description: @Model.Description </h5>
+
+<h5>Participants:</h5>
+<ul>
+    @foreach (var participant in Model.JoinActivities)
+    {
+       <p> -@participant.User.FirstName @participant.User.LastName</p> 
+    }
+</ul>
+
